@@ -16,5 +16,21 @@ namespace EloadasProject.Tests
         {
             e = new Eloadas(6, 40);
         }
+
+        [TestCase]
+        public void UjEloadasMindenHelyreUres()
+        {
+            Assert.AreEqual(6, e.SzabadHelyek, "Üres előadás nem üres minden hely");
+        }
+
+        [TestCase]
+        public void EloadasTeliE()
+        {
+            for (int i = 0; i < 32; i++)
+            {
+                e.Lefoglal();
+            }
+            Assert.IsTrue(e.Teli(), "Teli előadás még sincs tele");
+        }
     }
 }
