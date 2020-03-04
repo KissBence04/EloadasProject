@@ -32,5 +32,37 @@ namespace EloadasProject.Tests
             }
             Assert.IsTrue(e.Teli(), "Teli előadás még sincs tele");
         }
+
+        [TestCase]
+        public void UjEloadasNincsTeli()
+        {
+            Assert.IsFalse(e.Teli(), "Új előadás teli van");
+        }
+
+        [TestCase]
+        public void TeliEloadasHelyfoglalas()
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 40; j++)
+                {
+                    e.Lefoglal();
+                }  
+            }
+            e.Lefoglal();
+            Assert.IsTrue(e.Teli(), "Még sincs tele");
+        }
+
+        [TestCase]
+        public void RepuloFerohelyNemLehetNegativ()
+        {
+            Assert.Throws<ArgumentException>(() =>
+            {
+                new Eloadas(-2,-5);
+            }
+            );
+        }
+
+        
     }
 }
